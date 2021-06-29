@@ -6,12 +6,12 @@ use GuzzleHttp\Client;
 use \Firebase\JWT\JWT;
 
 class ZoomTrait{
-    public function create_meeting($meeting_topic,$start_time,$duration = 30)
+    public static function create_meeting($meeting_topic,$start_time,$duration = 30)
     {
         $client = new Client([
             'base_uri' => 'https://api.zoom.us',
         ]);
-        $access_token = $this->getZoomAccessToken();
+        $access_token = self::getZoomAccessToken();
         $response = $client->request('POST', '/v2/users/me/meetings', [
             "headers" => [
                 "Authorization" => "Bearer " . $access_token
@@ -29,11 +29,11 @@ class ZoomTrait{
      
     }
 
-    public function view_meeting()
+    public static function view_meeting()
     {
         $client = new Client(['base_uri' => 'https://api.zoom.us']);
         
-        $access_token = $this->getZoomAccessToken();
+        $access_token = self::getZoomAccessToken();
 
         $response = $client->request('GET', '/v2/users/me/meetings', [
             "headers" => [
@@ -53,11 +53,11 @@ class ZoomTrait{
         }
     }
 
-    public function delete_meeting($meeting_id)
+    public static function delete_meeting($meeting_id)
     {
         $client = new Client(['base_uri' => 'https://api.zoom.us']);
         
-        $access_token = $this->getZoomAccessToken();
+        $access_token = self::getZoomAccessToken();
 
         $response = $client->request("DELETE", "/v2/meetings/$meeting_id", [
             "headers" => [
@@ -70,7 +70,7 @@ class ZoomTrait{
         }
     }
 
-    private function getZoomAccessToken() {
+    private static function getZoomAccessToken() {
         $key = config('zoom.APP_SECRET');
         $payload = array(
             "iss" => config('zoom.APP_ID'),

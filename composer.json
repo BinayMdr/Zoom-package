@@ -1,0 +1,26 @@
+{
+    "name": "binay/zoom",
+    "description": "This will create,view,delete zoom meetings",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Binay Manandhar",
+            "email": "binaymdr25@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4":{
+            "Binay\\Zoom\\":"src/"
+        }
+    },
+    "extra":{
+        "laravel":{
+            "providers":[
+                "Binay\\Zoom\\ZoomServiceProvider"
+            ]
+        }
+    }
+}

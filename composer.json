@@ -3,6 +3,9 @@
     "description": "This will create,view,delete zoom meetings",
     "type": "library",
     "license": "MIT",
+    "require": {
+        "firebase/php-jwt": "^5.4"
+    },
     "authors": [
         {
             "name": "Binay Manandhar",
@@ -10,7 +13,6 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {},
     "autoload": {
         "psr-4":{
             "Binay\\Zoom\\":"src/"

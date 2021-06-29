@@ -1,11 +1,12 @@
 <?php
 
-namespace Binay\Zoom\Traits;
+namespace Binay\Zoom\Helper;
 
 use GuzzleHttp\Client;
 use \Firebase\JWT\JWT;
 
-class ZoomTrait{
+class ZoomHelper
+{
     public static function create_meeting($meeting_topic,$start_time,$duration = 30)
     {
         $client = new Client([

@@ -52,6 +52,7 @@ class ZoomHelper
                 ];
             }
         }
+        return $meetings;
     }
 
     public static function delete_meeting($meeting_id)

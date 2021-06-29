@@ -11,7 +11,7 @@ class ZoomTrait{
         $client = new Client([
             'base_uri' => 'https://api.zoom.us',
         ]);
-        $access_token = self::getZoomAccessToken();
+        $access_token = (new self)->getZoomAccessToken();
         $response = $client->request('POST', '/v2/users/me/meetings', [
             "headers" => [
                 "Authorization" => "Bearer " . $access_token
@@ -33,7 +33,7 @@ class ZoomTrait{
     {
         $client = new Client(['base_uri' => 'https://api.zoom.us']);
         
-        $access_token = self::getZoomAccessToken();
+        $access_token = (new self)->getZoomAccessToken();
 
         $response = $client->request('GET', '/v2/users/me/meetings', [
             "headers" => [
@@ -57,7 +57,7 @@ class ZoomTrait{
     {
         $client = new Client(['base_uri' => 'https://api.zoom.us']);
         
-        $access_token = self::getZoomAccessToken();
+        $access_token = (new self)->getZoomAccessToken();
 
         $response = $client->request("DELETE", "/v2/meetings/$meeting_id", [
             "headers" => [
@@ -70,7 +70,7 @@ class ZoomTrait{
         }
     }
 
-    private static function getZoomAccessToken() {
+    private function getZoomAccessToken() {
         $key = config('zoom.APP_SECRET');
         $payload = array(
             "iss" => config('zoom.APP_ID'),
@@ -78,7 +78,4 @@ class ZoomTrait{
         );
         return JWT::encode($payload, $key);    
     }
-
-
-
 }

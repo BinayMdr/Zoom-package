@@ -68,8 +68,9 @@ class ZoomHelper
         ]);
      
         if (204 == $response->getStatusCode()) {
-            echo "Meeting deleted.";
+            return "Meeting deleted.";
         }
+        return "Some error occured";
     }
 
     private function getZoomAccessToken() {
